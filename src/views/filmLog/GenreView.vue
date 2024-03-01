@@ -1,12 +1,16 @@
 <script setup>
-import { slide_films } from '../..//assets/films.js'
+import { slide_films } from '../../assets/films.js'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 <template>
   <div class="px-[24px]">
-    <p class="text-white text-[44px] font-blackops uppercase py-[70px]">Multfilm film</p>
+    <p class="text-white text-[44px] font-blackops uppercase py-[70px]">{{ id }} film</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
-      <div v-for="film in computedObj2()">
+      <router-link
+        :to="{ name: 'OnlyFilm', params: { id: film.film_id } }"
+        v-for="film in computedObj2(id)"
+      >
         <div class="text-white">
           <div class="relative">
             <div class="relative">
@@ -34,7 +38,7 @@ import { slide_films } from '../..//assets/films.js'
             <p class="font-bold text-[24px] px-[15px]">{{ film.name }}</p>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -42,19 +46,28 @@ import { slide_films } from '../..//assets/films.js'
 export default {
   data() {
     return {
-      slide_films: slide_films
+      slide_films: slide_films,
+      id: this.$route.params.id
     }
   },
-  components: {},
+
   computed: {
     computedObj() {
       return this.limit ? this.slide_films.slice(0, this.limit) : this.slide_films
     }
   },
+  watch: {
+    $route(to, from) {
+      this.id = this.$route.params.id
+    }
+  },
   methods: {
-    computedObj2() {
+    computedObj2(id) {
       function findFilmsByDate(films, targetDate) {
-        return films.filter((film) => film.genre == 'multfilm')
+        if (id == 'all') {
+          return films
+        }
+        return films.filter((film) => film.genre == id)
       }
 
       return findFilmsByDate(this.slide_films)

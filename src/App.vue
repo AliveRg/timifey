@@ -29,10 +29,16 @@ import { RouterLink, RouterView } from 'vue-router'
             ...
           </div>
           <RouterLink
+            class="py-[13px] px-[16px] border-solid border-white/80 border-[1px] rounded-[34px]"
+            to="/"
+          >
+            главная
+          </RouterLink>
+          <RouterLink
             v-for="route in routes"
             :key="route.id"
             class="py-[13px] px-[16px] border-solid border-white/80 border-[1px] rounded-[34px]"
-            :to="{ name: route.name }"
+            :to="{ name: route.name, params: { id: route.params } }"
             >{{ route.content }}</RouterLink
           >
         </nav>
@@ -53,43 +59,45 @@ export default {
       routes: [
         {
           id: 1,
-          content: 'главная',
-          name: 'Home'
+          content: 'кинопремьеры',
+          params: 'premiera',
+          name: 'GenreView'
         },
         {
           id: 2,
-          content: 'кинопремьеры',
-          name: 'Premiera'
+          content: 'рекомендации',
+          params: 'recomend',
+          name: 'GenreView'
         },
         {
           id: 3,
-          content: 'рекомендации',
-          name: 'Recomend'
+          content: 'ужасы',
+          params: 'triller',
+          name: 'GenreView'
         },
         {
           id: 4,
-          content: 'ужасы',
-          name: 'Triller'
+          content: 'комедии',
+          params: 'camedy',
+          name: 'GenreView'
         },
         {
           id: 5,
-          content: 'комедии',
-          name: 'Camedy'
+          content: 'фантастика',
+          params: 'fantasy',
+          name: 'GenreView'
         },
         {
           id: 6,
-          content: 'фантастика',
-          name: 'Fantasy'
+          content: 'мультфильм',
+          params: 'multfilm',
+          name: 'GenreView'
         },
         {
           id: 7,
-          content: 'мультфильм',
-          name: 'Multfilm'
-        },
-        {
-          id: 8,
           content: 'боевик',
-          name: 'Butle'
+          params: 'butle',
+          name: 'GenreView'
         }
       ]
     }

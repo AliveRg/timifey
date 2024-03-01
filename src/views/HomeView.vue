@@ -1,5 +1,6 @@
 <script setup>
 import { slide_films } from '../assets/films.js'
+import { RouterLink, RouterView } from 'vue-router'
 import { FreeMode } from 'swiper/modules'
 import 'swiper/css/free-mode'
 </script>
@@ -34,7 +35,7 @@ import 'swiper/css/free-mode'
                 <p class="font-light uppercase opacity-90">{{ film.genre }}</p>
                 <p class="font-bold text-[34px]">{{ film.name }}</p>
                 <p class="opacity-90">{{ film.description }}</p>
-                <div class="pt-3 flex items-center justify-center w-full">
+                <div class="pt-3 flex items-center justify-start w-full">
                   <button class="py-[18px] px-[28px] bg-white rounded-[32px] text-black">
                     Купить билет
                   </button>
@@ -47,12 +48,13 @@ import 'swiper/css/free-mode'
       <div class="px-[24px] mt-[100px]">
         <div class="flex items-center gap-3 font-montserrat text-[34px] text-white">
           <p class="font-blackops text-[44px] uppercase">movie poster</p>
-          <div
+          <router-link
+            :to="{ name: 'GenreView', params: { id: 'all' } }"
             class="flex items-end gap-1 specLink pt-[11px] pb-[13px] px-[16px] border-solid border-white/80 border-[1px] rounded-[34px]"
           >
             <p class="leading-7">все</p>
             <span class="material-symbols-outlined"> chevron_right </span>
-          </div>
+          </router-link>
         </div>
 
         <div class="py-10 pt-[40px] text-white">
@@ -89,7 +91,10 @@ import 'swiper/css/free-mode'
               @slideChange="onSlideChange"
             >
               <swiper-slide class="group" v-for="film in computedObj2(item.name)">
-                <div class="text-white">
+                <router-link
+                  :to="{ name: 'OnlyFilm', params: { id: film.film_id } }"
+                  class="text-white"
+                >
                   <div class="relative">
                     <div class="relative">
                       <img
@@ -115,7 +120,7 @@ import 'swiper/css/free-mode'
                     </div>
                     <p class="font-bold text-[24px] px-[15px]">{{ film.name }}</p>
                   </div>
-                </div>
+                </router-link>
               </swiper-slide>
             </swiper>
           </div>
