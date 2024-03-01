@@ -15,7 +15,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="w-2/3" @mouseleave="viewNavigate = false">
         <div class="h-[26px]"></div>
         <nav
-          class="bg-[#1f1f1f] text-white w-full text-[13px] flex items-start justify-between gap-[10px] flex-wrap overflow-hidden px-3 pb-3 font-montserrat uppercase rounded-md"
+          class="bg-[#1f1f1f] text-white w-full text-[13px] flex items-start justify-start gap-[10px] flex-wrap overflow-hidden px-3 pb-3 font-montserrat uppercase rounded-md"
           :class="
             viewNavigate
               ? 'h-auto shadow-md border-t-0 border-solid border-white/20 border-[1px]'
@@ -88,18 +88,8 @@ export default {
         },
         {
           id: 8,
-          content: 'фантастика',
-          name: 'Fantasy'
-        },
-        {
-          id: 9,
-          content: 'фантастика',
-          name: 'Fantasy'
-        },
-        {
-          id: 10,
-          content: 'фантастика',
-          name: 'Fantasy'
+          content: 'боевик',
+          name: 'Butle'
         }
       ]
     }
