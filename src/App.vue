@@ -21,10 +21,11 @@ import 'swiper/css'
           :class="
             viewNavigate
               ? 'h-auto shadow-md border-t-0 border-solid border-white/20 border-[1px]'
-              : 'h-[52px]'
+              : 'h-[52px] '
           "
         >
           <div
+            @click="viewNavigate = true"
             class="specLink py-[13px] px-[16px] border-solid border-white/80 border-[1px] rounded-[34px] w-[52px] flex items-center justify-center"
             @mouseenter="viewNavigate = true"
           >
