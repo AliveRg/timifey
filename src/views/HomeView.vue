@@ -1,4 +1,9 @@
 <script setup>
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
 import { slide_films } from '../assets/films.js'
 import { RouterLink, RouterView } from 'vue-router'
 import { FreeMode } from 'swiper/modules'
@@ -141,12 +146,6 @@ import 'swiper/css/free-mode'
 </template>
 
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
-// Import Swiper styles
-import 'swiper/css'
-
 export default {
   data() {
     return {

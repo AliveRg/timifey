@@ -1,5 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
 </script>
 
 <template>
@@ -52,10 +54,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
 // Import Swiper styles
-import 'swiper/css'
 export default {
   data() {
     return {
