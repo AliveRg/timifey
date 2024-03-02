@@ -8,7 +8,7 @@ import 'swiper/css'
   <header class="bg-[#1f1f1f] py-[4px] px-[24px] md:h-[102px] z-10 relative">
     <div class="flex items-start gap-6">
       <div class="md:h-[108px] w-1/3 flex items-center gap-2 flex-col md:flex-row">
-        <img class="h-full" src="../public/jacp.webp" alt="" />
+        <img class="md:h-full" src="/jacp.webp" alt="" />
         <div class="flex flex-col gap-1 items-start justify-center">
           <p class="font-blackops text-white text-[32px]">afisha</p>
           <span class="font-blackops text-white text-[13px]">kino sweet</span>
