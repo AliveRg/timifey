@@ -2,13 +2,15 @@
 import { slide_films } from '../../assets/films.js'
 import { cinema } from '../../assets/films.js'
 import { FreeMode } from 'swiper/modules'
+import ButtonByTicket from '../../components/ButtonByTicket.vue'
+
 import 'swiper/css/free-mode'
 </script>
 
 <template>
   <div class="">
-    <div class="w-full h-[70dvh] pt-[50px] flex px-[24px]">
-      <div class="w-1/3 relative">
+    <div class="w-full flex flex-col md:flex-row md:h-[70dvh] pt-[50px] px-[24px]">
+      <div class="md:w-1/3 relative">
         <img
           class="relative rounded-[40px] w-full h-full object-cover object-top z-0"
           :src="slide_films[id - 1].img_path"
@@ -20,17 +22,12 @@ import 'swiper/css/free-mode'
           <p class="font-light uppercase opacity-90">{{ slide_films[id - 1].genre }}</p>
           <p class="font-bold text-[34px]">{{ slide_films[id - 1].name }}</p>
           <p class="opacity-90">{{ slide_films[id - 1].description }}</p>
-          <div class="pt-3 flex items-center justify-start w-full">
-            <button class="py-[18px] px-[28px] bg-white rounded-[32px] text-black">
-              Купить билет
-            </button>
-          </div>
         </div>
         <div
-          class="absolute top-0 bottom-0 right-0 left-0 z-10 backdrop-filter backdrop-blur-[100px] backdrop-brightness-50 rounded-[40px]"
+          class="absolute top-0 bottom-0 right-0 left-0 z-10 backdrop-filter md:backdrop-blur-[100px] backdrop-brightness-50 rounded-[40px]"
         ></div>
       </div>
-      <div class="relative w-2/3">
+      <div class="hidden md:block relative w-2/3">
         <img
           class="rounded-[40px] w-full h-full object-cover object-center"
           :src="slide_films[id - 1].img_path"
@@ -41,10 +38,10 @@ import 'swiper/css/free-mode'
         ></div>
       </div>
     </div>
-    <div class="w-full px-[80px] pt-[50px]">
+    <div class="w-full px-[24px] md:px-[80px] pt-[50px]">
       <div class="inner_s rounded-[40px] flex flex-col p-[32px] gap-[60px]">
         <div
-          class="flex gap-[60px] text-white font-montserrat"
+          class="flex justify-between flex-col md:flex-row gap-[60px] text-white font-montserrat"
           v-for="cinemI in computedObj2()"
           :key="cinemI.id"
         >
@@ -71,7 +68,9 @@ import 'swiper/css/free-mode'
               </div>
             </div>
           </div>
-          <div class=""></div>
+          <div class="">
+            <ButtonByTicket :path="id - 1" :cinema="cinemI.id"></ButtonByTicket>
+          </div>
         </div>
       </div>
     </div>
@@ -88,7 +87,9 @@ export default {
     }
   },
 
-  computed: {},
+  components: {
+    ButtonByTicket
+  },
   watch: {
     $route(to, from) {
       this.id = this.$route.params.id

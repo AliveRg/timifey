@@ -3,9 +3,9 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header class="bg-[#1f1f1f] py-[4px] px-[24px] h-[102px] z-10 relative">
+  <header class="bg-[#1f1f1f] py-[4px] px-[24px] md:h-[102px] z-10 relative">
     <div class="flex items-start gap-6">
-      <div class="h-[108px] w-1/3 flex items-center gap-2">
+      <div class="md:h-[108px] w-1/3 flex items-center gap-2 flex-col md:flex-row">
         <img class="h-full" src="../jacp.webp" alt="" />
         <div class="flex flex-col gap-1 items-start justify-center">
           <p class="font-blackops text-white text-[32px]">afisha</p>
@@ -15,7 +15,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="w-2/3" @mouseleave="viewNavigate = false">
         <div class="h-[26px]"></div>
         <nav
-          class="bg-[#1f1f1f] text-white w-full text-[13px] flex items-start justify-start gap-[10px] flex-wrap overflow-hidden px-3 pb-3 font-montserrat uppercase rounded-md"
+          class="bg-[#1f1f1f] text-white w-full text-[13px] flex items-start justify-end md:justify-start gap-[10px] flex-wrap overflow-hidden px-3 pb-3 font-montserrat uppercase rounded-md"
           :class="
             viewNavigate
               ? 'h-auto shadow-md border-t-0 border-solid border-white/20 border-[1px]'

@@ -1,6 +1,7 @@
 <script setup>
 import { slide_films } from '../../assets/films.js'
 import { RouterLink, RouterView } from 'vue-router'
+import ButtonByTicket from '../../components/ButtonByTicket.vue'
 </script>
 <template>
   <div class="px-[24px]">
@@ -27,11 +28,7 @@ import { RouterLink, RouterView } from 'vue-router'
                 <div
                   class="h-full w-full flex justify-end flex-col text-white font-montserrat text-[15px] gap-[6px]"
                 >
-                  <div class="pt-3 pb-6 flex items-center justify-end w-full">
-                    <button class="py-[38px] px-[28px] bg-white rounded-[32px] text-black">
-                      Купить билет
-                    </button>
-                  </div>
+                  <ButtonByTicket :path="film.film_id"></ButtonByTicket>
                 </div>
               </div>
             </div>
@@ -50,7 +47,9 @@ export default {
       id: this.$route.params.id
     }
   },
-
+  components: {
+    ButtonByTicket
+  },
   computed: {
     computedObj() {
       return this.limit ? this.slide_films.slice(0, this.limit) : this.slide_films

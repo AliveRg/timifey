@@ -2,6 +2,7 @@
 import { slide_films } from '../assets/films.js'
 import { RouterLink, RouterView } from 'vue-router'
 import { FreeMode } from 'swiper/modules'
+import ButtonByTicket from '../components/ButtonByTicket.vue'
 import 'swiper/css/free-mode'
 </script>
 
@@ -9,7 +10,25 @@ import 'swiper/css/free-mode'
   <main class="bg-[#1f1f1f] pt-[20px]">
     <div class="swiper">
       <swiper
-        :slides-per-view="2.5"
+        :breakpoints="{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+
+          640: {
+            slidesPerView: 1.5,
+            spaceBetween: 40
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 40
+          },
+          1440: {
+            slidesPerView: 2.5,
+            spaceBetween: 40
+          }
+        }"
         :space-between="30"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
@@ -22,26 +41,21 @@ import 'swiper/css/free-mode'
         >
           <router-link :to="{ name: 'OnlyFilm', params: { id: film.film_id } }" class="relative">
             <img
-              class="rounded-[40px] w-[37dvw] h-[37dvw] object-cover"
+              class="relative rounded-[40px] max-h-[90dvw] sm:max-h-[50dvw] md:max-h-[40dvw] lg:max-h-[30dvw] w-full h-full object-cover object-top z-0"
               :src="film.img_path"
               alt=""
             />
             <div
-              class="absolute top-0 left-0 right-0 bottom-0 p-4 backdrop-filter group-hover:backdrop-brightness-[70%] backdrop-brightness-50 transition-all rounded-[40px]"
+              class="absolute z-20 top-0 bottom-0 right-0 left-0 flex justify-end flex-col text-white font-montserrat text-[15px] gap-[6px] p-4"
             >
-              <div
-                class="h-full w-full flex justify-end flex-col text-white font-montserrat text-[15px] gap-[6px]"
-              >
-                <p class="font-light uppercase opacity-90">{{ film.genre }}</p>
-                <p class="font-bold text-[34px]">{{ film.name }}</p>
-                <p class="opacity-90">{{ film.description }}</p>
-                <div class="pt-3 flex items-center justify-start w-full">
-                  <button class="py-[18px] px-[28px] bg-white rounded-[32px] text-black">
-                    Купить билет
-                  </button>
-                </div>
-              </div>
+              <p class="font-light uppercase opacity-90">{{ film.genre }}</p>
+              <p class="font-bold text-[34px]">{{ film.name }}</p>
+              <p class="opacity-90">{{ film.description }}</p>
+              <ButtonByTicket :path="film.film_id"></ButtonByTicket>
             </div>
+            <div
+              class="absolute top-0 bottom-0 right-0 left-0 z-10 backdrop-filter backdrop-brightness-50 rounded-[40px]"
+            ></div>
           </router-link>
         </swiper-slide>
       </swiper>
@@ -110,11 +124,7 @@ import 'swiper/css/free-mode'
                         <div
                           class="h-full w-full flex justify-end flex-col text-white font-montserrat text-[15px] gap-[6px]"
                         >
-                          <div class="pt-3 flex items-center justify-end w-full">
-                            <button class="py-[18px] px-[28px] bg-white rounded-[32px] text-black">
-                              Купить билет
-                            </button>
-                          </div>
+                          <ButtonByTicket :path="film.film_id"></ButtonByTicket>
                         </div>
                       </div>
                     </div>
@@ -173,8 +183,10 @@ export default {
   },
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    ButtonByTicket
   },
+
   computed: {
     computedObj() {
       return this.limit ? this.slide_films.slice(0, this.limit) : this.slide_films
