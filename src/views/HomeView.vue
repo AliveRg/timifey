@@ -78,7 +78,25 @@ import 'swiper/css/free-mode'
 
         <div class="py-10 pt-[40px] text-white">
           <swiper
-            :slides-per-view="8"
+            :breakpoints="{
+              320: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+
+              640: {
+                slidesPerView: 4,
+                spaceBetween: 40
+              },
+              1024: {
+                slidesPerView: 6,
+                spaceBetween: 40
+              },
+              1440: {
+                slidesPerView: 8,
+                spaceBetween: 40
+              }
+            }"
             :space-between="20"
             :slideToClickedSlide="true"
             :centeredSlidesBounds="true"
@@ -87,7 +105,7 @@ import 'swiper/css/free-mode'
           >
             <swiper-slide v-for="item in 29" :key="item" v-slot="{ isActive }">
               <div
-                class="flex gap-2 font-montserrat text-[24px] items-center justify-center transition-all cursor-default"
+                class="flex gap-8 font-montserrat text-[24px] items-center justify-center transition-all cursor-default"
                 @click="formatDateFolter(item), (VirtualSlide = item)"
                 :class="VirtualSlide == item ? 'text-black bg-white' : ''"
               >
