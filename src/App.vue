@@ -52,6 +52,10 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
 export default {
   data() {
     return {
@@ -100,6 +104,22 @@ export default {
           name: 'GenreView'
         }
       ]
+    }
+  },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper)
+    }
+    const onSlideChange = () => {
+      console.log('slide change')
+    }
+    return {
+      onSwiper,
+      onSlideChange
     }
   }
 }
