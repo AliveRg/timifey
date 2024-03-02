@@ -16,7 +16,8 @@ import { RouterLink, RouterView } from 'vue-router'
 export default {
   data() {
     return {
-      fullPath: String
+      fullPath: String,
+      item: 5
     }
   },
   computed: {
