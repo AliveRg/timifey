@@ -225,14 +225,7 @@ export default {
       return `${dayOfMonth.toString().padStart(2, '0')}${month.toString().padStart(2, '0')}${year}`
     }
   },
-  setup() {
-    const onSwiper = (swiper) => {}
-    const onSlideChange = () => {}
-    return {
-      onSwiper,
-      onSlideChange
-    }
-  }
+  setup() {}
 }
 </script>
 
