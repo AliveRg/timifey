@@ -119,7 +119,25 @@ import 'swiper/css/free-mode'
           <div class="" v-for="item in genreCollection" :key="item">
             <p class="text-white text-[44px] font-blackops uppercase">{{ item.name }}</p>
             <swiper
-              :slides-per-view="2.5"
+              :breakpoints="{
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 20
+                },
+
+                640: {
+                  slidesPerView: 1.75,
+                  spaceBetween: 40
+                },
+                1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 40
+                },
+                1440: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 40
+                }
+              }"
               :mousewheel="true"
               :space-between="30"
               :freeMode="true"
