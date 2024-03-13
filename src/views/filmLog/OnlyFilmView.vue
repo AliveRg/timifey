@@ -98,7 +98,7 @@ export default {
   methods: {
     computedObj2() {
       const film = this.slide_films[this.id - 1]
-      console.log(film)
+
       function filterById(array, ids) {
         return array.filter((obj) => ids.includes(obj.id))
       }
